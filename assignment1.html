@@ -1,0 +1,272 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+    <table><tr><td>
+        <table border=1>
+            <tr>
+                <td>
+                    <a href="javascript:Move('A')">
+                        <img src="blank.png" border=0 height=100 width=100 id='A'>
+                    </a>
+                </td>
+                <td>
+                    <a href="javascript:Move('B')">
+                        <img src="blank.png" border=0 height=100 width=100 id='B'>
+                    </a>
+                </td>
+                <td>
+                    <a href="javascript:Move('C')">
+                        <img src="blank.png" border=0 height=100 width=100 id='C'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:Move('D')">
+                        <img src="blank.png" border=0 height=100 width=100 id='D'>
+                    </a>
+                </td>
+                <td>
+                    <a href="javascript:Move('E')">
+                        <img src="blank.png" border=0 height=100 width=100 id='E'>
+                    </a>
+                </td>
+                <td>
+                    <a href="javascript:Move('F')">
+                        <img src="blank.png" border=0 height=100 width=100 id='F'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href = "javascript:Move('G')">
+                       <img src="blank.png" border=0 height=100 width=100 id='G'>
+                    </a>
+                </td>
+                <td>
+                    <a href="javascript:Move('H')">
+                        <img src="blank.png" border=0 height=100 width=100 id='H'>
+                    </a>
+                </td>
+                <td>
+                    <a href="javascript:Move('I')">
+                        <img src="blank.png" border=0 height=100 width=100 id='I'>
+                    </a>
+                </td>
+            </tr>
+        </table><!--END DIAGRAM TABLE-->
+        </td><td>
+        <table>
+           <tr>
+                <td><input type="text" size="5" id="player1" value=0></td>
+                <td>player1</td>
+            </tr>
+            <tr>
+                <td><input type="text" size="5" id="player2" value=0></td>
+                <td>player2</td>
+            </tr>
+            <tr>
+                <td><input type="text" size="5" id="ties" value=0></td>
+                <td>ties</td>
+            </tr>
+        </table>
+        </td>
+        </tr>
+        </table>
+        <input type="button" value="Play Again" onclick="playAgain();">
+        &nbsp;&nbsp;&nbsp;
+        <input type="button" value="Game Help" onclick="help();">
+    <!--<body>
+</html>-->
+<script type="text/javascript">
+    var a=0;
+    var b=0;
+    var c=0;
+    var d=0;
+    var e=0;
+    var f=0;
+    var g=0;
+    var h=0;
+    var i=0;
+    var whose_move=1;
+    var temp='';
+    var ok=0;
+    var who_won=0;
+    var count_player1_wins=0;
+    var count_player2_wins=0;
+    var count_ties=0;
+
+    function Move(c)
+    {
+        temp=c;
+        ok=0;
+        if(whose_move == 1)
+        {
+            check_Space();
+            if(ok == 1)
+            {
+                document.getElementById(c).src = "o.png";
+                whose_move=2;
+                process();
+            }
+            else{
+                alert("That square is aleady occupied. please select another square");
+            }
+        }
+        else
+        {
+            check_Space();
+            if(ok == 1)
+            {
+                document.getElementById(c).src ="x.jpg";
+                whose_move=1;
+                process();
+            }
+            else{
+                alert("That square is already occupied. please select another square");
+            }
+        }
+
+    }/*end of function-c*/
+
+    function check_Space()
+    {
+        if((temp == 'A') && (a == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) a=1;
+            if(whose_move==2) a=2;
+        }
+        if((temp == 'B') && (b == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) b=1;
+            if(whose_move==2) b=2;
+        }
+        if((temp == 'C') && (c == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) c=1;
+            if(whose_move==2) c=2;
+        }
+        if((temp == 'D') && (d == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) d=1;
+            if(whose_move==2) d=2;
+        }
+        if((temp == 'E') && (e == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) e=1;
+            if(whose_move==2) e=2;
+        }
+        if((temp == 'F') && (f == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) f=1;
+            if(whose_move==2) f=2;
+        }
+        if((temp == "G") && (g == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) g=1;
+            if(whose_move==2) g=2;
+        }
+        if((temp == 'H') && (h == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) h=1;
+            if(whose_move==2) h=2;
+        }
+        if((temp == 'I') && (i == 0 ))
+        {
+            ok=1;
+            if(whose_move == 1) i=1;
+            if(whose_move==2) i=2;
+        }
+
+
+    }/*end of check space*/
+    function process()
+    {
+        check_win();
+        if(who_won ==1)
+        {
+            alert("player1 WON");
+            count_player1_wins++;
+            document.getElementById('player1').value =count_player1_wins;
+        }
+        if(who_won ==2)
+        {
+            alert("player2 WON");
+            count_player2_wins++;
+            document.getElementById('player2').value =count_player2_wins;
+        }
+        if(who_won ==3)
+        {
+            alert("match TIED");
+            count_ties++;
+            document.getElementById('ties').value =count_ties;
+        }
+    }/* end process */
+    function check_win()
+    {
+        if((a==1)&&(b==1)&&(c==1)) who_won=1;
+        if((d==1)&&(e==1)&&(f==1)) who_won=1;
+        if((g==1)&&(h==1)&&(i==1)) who_won=1;
+        if((a==1)&&(d==1)&&(g==1)) who_won=1;
+        if((b==1)&&(e==1)&&(h==1)) who_won=1;
+        if((c==1)&&(f==1)&&(i==1)) who_won=1;
+        if((a==1)&&(e==1)&&(i==1)) who_won=1;
+        if((c==1)&&(e==1)&&(g==1)) who_won=1;
+        if((a==1)&&(c==1)&&(e==1)&&(g==1)&&(h==1)) who_won=1;
+        if((a==2)&&(c==2)&&(e==2)&&(g==2)&&(h==2)) who_won=2;
+        if((a==2)&&(b==2)&&(c==2)) who_won=2;
+        if((d==2)&&(e==2)&&(f==2)) who_won=2;
+        if((g==2)&&(h==2)&&(i==2)) who_won=2;
+        if((a==2)&&(d==2)&&(g==2)) who_won=2;
+        if((b==2)&&(e==2)&&(h==2)) who_won=2;
+        if((c==2)&&(f==2)&&(i==2)) who_won=2;
+        if((a==2)&&(e==2)&&(i==2)) who_won=2;
+        if((c==2)&&(e==2)&&(g==2)) who_won=2;
+        if((a!=0)&&(b!=0)&&(c!=0)&&(d!=0)&&(e!=0)&&(f!=0)&&(g!=0)&&(h!=0)&&(i!=0)&(who_won==0)) who_won=3;
+    }
+    function playAgain()
+    {
+        whose_move =1;
+        a=0;
+        b=0;
+        c=0;
+        d=0;
+        e=0;
+        f=0;
+        g=0;
+        h=0;
+        i=0;
+        temp='';
+        ok=0;
+        who_won=0;
+        //count_player1_wins=0;
+        //count_player2_wins=0;
+        //count_ties=0;
+        document.getElementById('A').src="blank.png";
+        document.getElementById('B').src="blank.png";
+        document.getElementById('C').src="blank.png";
+        document.getElementById('D').src="blank.png";
+        document.getElementById('E').src="blank.png";
+        document.getElementById('F').src="blank.png";
+        document.getElementById('G').src="blank.png";
+        document.getElementById('H').src="blank.png";
+        document.getElementById('I').src="blank.png";
+    }
+    function help()
+    {
+        alert("welcome to tic-tac-toe!");
+    }
+
+</script>
+</body>
+</html>
